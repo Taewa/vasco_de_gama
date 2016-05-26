@@ -1,0 +1,160 @@
+html,body{
+	height: 100%;
+}
+
+
+/* Panel basic
+========================================================================== */
+.panel-cover{
+	height: 100%;
+	
+	.content-cover{
+		height: 100%;
+	}
+	
+	.panel-content{
+		height: 0%;
+		overflow: hidden;
+		transition : all $aniSec ease;
+		transform-origin: center bottom;
+	}
+
+	.panel-description{
+		height: 0%;
+		overflow: hidden;
+		transition : all $aniSec ease;
+		transform-origin: center top;
+	}
+}
+
+
+.panel{
+	height: 50%;
+	transition : all $aniSec ease;
+	padding: 10px;
+	position: relative;
+	box-sizing: border-box;
+
+	&.top{
+		background-color: $topColor;
+	}
+
+	&.bottom{
+		background-color: $bottomColor;
+	}
+
+	&.panel-opened{
+		// height: 0%;
+		// padding: 0;
+	}
+
+	.main-title{
+		color: #fff;
+		// font-size: 100vw;
+		display: block;
+		transform-origin: left top;
+		transition : all $aniSec ease;
+		
+
+
+		&.top-title{
+			// transform: scaleX(.275);		// ( deviceWidth / textLength ) * 1.5
+		}
+
+		&.bottom-title{
+			// transform: scaleX(.203);		// ( deviceWidth / textLength ) * 1.5
+		}
+	}
+
+
+}
+
+
+/* Opened panel
+========================================================================== */
+.panel-content-opened{
+	
+	.panel-content{
+		background:#fff;
+		width: 100%;
+		position: absolute;
+		left: 0;
+	}
+
+	.panel-description{
+		width: 100%;
+		height: 90%;
+	}
+
+
+
+	/* Opened : Positive
+	========================================================================== */
+	&.positive-mode{
+		.negative-panel{
+			.panel-content{
+				height: 100%;
+				bottom: 0;
+			}
+
+			.panel-description{
+				display: none;
+			}
+		}
+
+		.positive-panel{
+			.panel-content{
+				height: 0%;
+			}
+
+			.panel-description{
+
+			}
+		}
+		
+	}
+
+
+
+
+
+	/* Opened : Negative
+	========================================================================== */
+	&.negative-mode{
+		.negative-panel{
+			.panel-content{
+				height: 0%;
+			}
+
+			.panel-description{
+				
+			}
+		}
+
+		.positive-panel{
+			.panel-content{
+				height: 100%;
+				top: 0;
+			}
+
+			.panel-description{
+				display: none;
+			}
+		}
+	}
+
+
+	.main-title{
+		height: 10%;
+
+		&.top-title{
+			
+		}
+
+		&.bottom-title{
+			
+		}
+	}
+
+	
+}
