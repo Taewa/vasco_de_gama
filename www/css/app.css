@@ -321,27 +321,40 @@ table {
 html, body {
   height: 100%; }
 
+img {
+  width: 100%;
+  vertical-align: top; }
+
 /* Panel basic
 ========================================================================== */
 .panel-cover {
   height: 100%; }
   .panel-cover .content-cover {
-    height: 100%; }
+    height: 0%;
+    transform: scale(1, 0);
+    transition: all 0.5s ease-in-out; }
   .panel-cover .panel-content {
     height: 0%;
     overflow: hidden;
-    transition: all 2.8s ease;
+    transition: all 0.5s ease-in-out;
     transform-origin: center bottom; }
+    .panel-cover .panel-content .year {
+      width: 100%;
+      height: 100%;
+      display: inline-block; }
+      .panel-cover .panel-content .year img {
+        height: 100%; }
   .panel-cover .panel-description {
     height: 0%;
     overflow: hidden;
-    transition: all 2.8s ease;
+    transition: all 0.5s ease-in-out;
     transform-origin: center top; }
+    .panel-cover .panel-description .desc-img {
+      height: 100%; }
 
 .panel {
   height: 50%;
-  transition: all 2.8s ease;
-  padding: 10px;
+  transition: all 0.5s ease-in-out;
   position: relative;
   box-sizing: border-box; }
   .panel.top {
@@ -350,9 +363,12 @@ html, body {
     background-color: #00f; }
   .panel .main-title {
     color: #fff;
+    height: 100%;
     display: block;
     transform-origin: left top;
-    transition: all 2.8s ease; }
+    transition: all 0.5s ease-in-out; }
+    .panel .main-title .title-img {
+      height: 100%; }
 
 /* Opened panel
 ========================================================================== */
@@ -364,24 +380,44 @@ html, body {
   .panel-content-opened .panel-content {
     background: #fff;
     width: 100%;
-    position: absolute;
-    left: 0; }
+    transform: scale(1, 1); }
   .panel-content-opened .panel-description {
     width: 100%;
     height: 90%; }
+  .panel-content-opened.positive-mode .negative-panel .content-cover {
+    height: 100%;
+    transform: scale(1, 1);
+    transform-origin: left bottom; }
   .panel-content-opened.positive-mode .negative-panel .panel-content {
     height: 100%;
     bottom: 0; }
   .panel-content-opened.positive-mode .negative-panel .panel-description {
     display: none; }
+  .panel-content-opened.positive-mode .positive-panel .main-title {
+    height: 10%;
+    transform: scale(1, 1); }
+  .panel-content-opened.positive-mode .positive-panel .content-cover {
+    height: 90%;
+    transform: scale(1, 1); }
   .panel-content-opened.positive-mode .positive-panel .panel-content {
     height: 0%; }
+  .panel-content-opened.negative-mode .negative-panel .content-cover {
+    height: 90%;
+    transform: scale(1, 1); }
+  .panel-content-opened.negative-mode .negative-panel .main-title {
+    height: 10%;
+    transform: scale(1, 1); }
   .panel-content-opened.negative-mode .negative-panel .panel-content {
     height: 0%; }
+  .panel-content-opened.negative-mode .positive-panel .content-cover {
+    height: 100%;
+    transform: scale(1, 1);
+    transform-origin: left top; }
   .panel-content-opened.negative-mode .positive-panel .panel-content {
     height: 100%;
     top: 0; }
   .panel-content-opened.negative-mode .positive-panel .panel-description {
     display: none; }
   .panel-content-opened .main-title {
-    height: 10%; }
+    height: 0%;
+    transform: scale(1, 0); }

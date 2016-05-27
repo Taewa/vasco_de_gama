@@ -1,4 +1,4 @@
-var app = angular.module('juliette',[]);
+var app = angular.module('juliette',['ngAnimate']);
 
 // app.config(function ($routeProvider) {
 // 	$routeProvider

@@ -1,15 +1,22 @@
 <section class="panel-cover" ng-class="{ 'panel-content-opened' : openOn, 'positive-mode' : openPos, 'negative-mode' : openNag }">
 	
 	<div class="top negative-panel panel" ng-click="open('nag')" ng-class="{ 'panel-opened' : openOn }">
-		<span class="top-title main-title">{{topText}}</span>
+		<!-- <span class="top-title main-title">{{topText}}</span> -->
+		<span class="top-title main-title">
+			<img src="img/dummy-4.png" class="title-img">
+		</span>
+		
 		
 		<article class="content-cover">
-			<!-- <div class="panel-content">
-				<span class="year">1469</span>
+			<div class="panel-content">
+				<span class="year">
+					<img src="img/dummy-1.png" alt="">
+				</span>
 			</div>
 
 			<div class="panel-description">
-			</div>	 -->
+				<img src="img/dummy-5.png" alt="">
+			</div>	
 		</article>
 		
 	</div>
@@ -20,19 +27,22 @@
 	<div class="bottom positive-panel panel" ng-click="open('pos')">
 		
 		<article class="content-cover">
-			<!-- <div class="panel-content">
-				<span class="year">1469</span>
+			<div class="panel-content">
+				<span class="year">
+					<img src="img/dummy-1.png" alt="">
+				</span>
 			</div>
 
 			<div class="panel-description">
-				Vasco de Gama s’est frotté au combat lors des guerres contre castille, s’est distingué et a montré de remarquables aptitudes en tant que marin intrépide lors des batailles maritimes.
-				Vasco de Gama s’est frotté au combat lors des guerres contre castille, s’est distingué et a montré de remarquables aptitudes en tant que marin intrépide lors des batailles maritimes.
-				Vasco de Gama s’est frotté au combat lors des guerres contre castille, s’est distingué et a montré de remarquables aptitudes en tant que marin intrépide lors des batailles maritimes.
-				Vasco de Gama s’est frotté au combat lors des guerres contre castille, s’est distingué et a montré de remarquables aptitudes en tant que marin intrépide lors des batailles maritimes.
-			</div>	 -->
+				<img src="img/dummy-2.png" class="desc-img">
+			</div>	
 		</article>
 		
-		<span class="bottom-title main-title">{{bottomText}}</span>
+		<!-- <span class="bottom-title main-title">{{bottomText}}</span> -->
+		<span class="bottom-title main-title">
+			<img src="img/dummy-3.png" class="title-img">
+		</span>
+		
 	</div>
 
 </section>

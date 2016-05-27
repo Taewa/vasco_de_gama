@@ -34,6 +34,8 @@ app.directive("openingPanel", [function() {
 				// }
 			});
 
+
+
 			/* Method
 			========================================================================== */
 			scope.init = function(){
@@ -62,7 +64,7 @@ app.directive("openingPanel", [function() {
 					scope.openNag = true;	
 				}
 
-				scope.insertContent();
+				// scope.insertContent();
 			};
 
 
