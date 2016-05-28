@@ -319,7 +319,8 @@ table {
   border-collapse: collapse; }
 
 html, body {
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
 
 img {
   width: 100%;
@@ -389,8 +390,7 @@ img {
     transform: scale(1, 1);
     transform-origin: left bottom; }
   .panel-content-opened.positive-mode .negative-panel .panel-content {
-    height: 100%;
-    bottom: 0; }
+    height: 100%; }
   .panel-content-opened.positive-mode .negative-panel .panel-description {
     display: none; }
   .panel-content-opened.positive-mode .positive-panel .main-title {
@@ -412,7 +412,7 @@ img {
   .panel-content-opened.negative-mode .positive-panel .content-cover {
     height: 100%;
     transform: scale(1, 1);
-    transform-origin: left top; }
+    transform-origin: left bottom; }
   .panel-content-opened.negative-mode .positive-panel .panel-content {
     height: 100%;
     top: 0; }

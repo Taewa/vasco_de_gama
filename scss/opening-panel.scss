@@ -1,5 +1,6 @@
 html,body{
 	height: 100%;
+	overflow: hidden;
 }
 
 img{
@@ -128,13 +129,15 @@ img{
 
 			.panel-content{
 				height: 100%;
-				bottom: 0;
+				// bottom: 0;
 			}
 
 			.panel-description{
 				display: none;
 			}
 		}
+
+
 
 		.positive-panel{
 
@@ -189,12 +192,14 @@ img{
 			}
 		}
 
+		
+
 		.positive-panel{
 
 			.content-cover{
 				height: 100%;
 				transform: scale(1,1);
-				transform-origin: left top;
+				transform-origin: left bottom;
 			}
 
 			.panel-content{

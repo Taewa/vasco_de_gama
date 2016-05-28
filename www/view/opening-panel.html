@@ -1,14 +1,13 @@
-<section class="panel-cover" ng-class="{ 'panel-content-opened' : openOn, 'positive-mode' : openPos, 'negative-mode' : openNag }">
+<section class="panel-cover" ng-class="{ 'panel-content-opened' : openOn, 'positive-mode' : openPos, 'negative-mode' : openNeg }">
 	
-	<div class="top negative-panel panel" ng-click="open('nag')" ng-class="{ 'panel-opened' : openOn }">
-		<!-- <span class="top-title main-title">{{topText}}</span> -->
+	<div class="top negative-panel panel" ng-click="open('neg')" ng-class="{ 'panel-opened' : openOn }">
 		<span class="top-title main-title">
-			<img src="img/dummy-4.png" class="title-img">
+			<img src="img/title-neg.png" class="title-img">
 		</span>
 		
 		
 		<article class="content-cover">
-			<div class="panel-content">
+			<!-- <div class="panel-content">
 				<span class="year">
 					<img src="img/dummy-1.png" alt="">
 				</span>
@@ -16,7 +15,7 @@
 
 			<div class="panel-description">
 				<img src="img/dummy-5.png" alt="">
-			</div>	
+			</div>	 -->
 		</article>
 		
 	</div>
@@ -27,7 +26,7 @@
 	<div class="bottom positive-panel panel" ng-click="open('pos')">
 		
 		<article class="content-cover">
-			<div class="panel-content">
+			<!-- <div class="panel-content">
 				<span class="year">
 					<img src="img/dummy-1.png" alt="">
 				</span>
@@ -35,12 +34,11 @@
 
 			<div class="panel-description">
 				<img src="img/dummy-2.png" class="desc-img">
-			</div>	
+			</div>	 -->
 		</article>
 		
-		<!-- <span class="bottom-title main-title">{{bottomText}}</span> -->
 		<span class="bottom-title main-title">
-			<img src="img/dummy-3.png" class="title-img">
+			<img src="img/title-pos.png" class="title-img">
 		</span>
 		
 	</div>

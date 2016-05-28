@@ -8,31 +8,39 @@ app.directive("openingPanel", [function() {
 			/* Properties
 			========================================================================== */
 			scope.openOn = false;
-			scope.panelCurrent = ''; //positive : negative
-			scope.topText = 'VASCO';
-			scope.bottomText = 'DE GAMA';
+			scope.panelCurrent = ''; 	//positive : negative
+			scope.endOfStory = 5;		//Limit of story
+			scope.chosenStory = '';		//Chosen by user. Mobile version will be one way syory telling
+			scope.isShown = {			//Keep the panel that is shown
+				pos : [],
+				neg : []
+			}
+			scope.storyOver = false;	//It becomes true when story is over.
+			
+			// scope.topText = 'VASCO';
+			// scope.bottomText = 'DE GAMA';
 
 			
 
 			/* Watch
 			========================================================================== */
-			scope.$watch('panelCurrent', function(newVal, oldVal){
-				if(newVal == oldVal) return;  // eg, first run
+			// scope.$watch('panelCurrent', function(newVal, oldVal){
+			// 	if(newVal == oldVal) return;  // eg, first run
 
 				
 				
-				// scope.openOn = true;
+			// 	// scope.openOn = true;
 
-				// if(newVal == 'pos'){
-				// 	//Positive
-				// 	scope.openPos = true;
-				// 	scope.openNag = false;	
-				// }else{
-				// 	//Negative
-				// 	scope.openPos = false;
-				// 	scope.openNag = true;	
-				// }
-			});
+			// 	// if(newVal == 'pos'){
+			// 	// 	//Positive
+			// 	// 	scope.openPos = true;
+			// 	// 	scope.openNeg = false;	
+			// 	// }else{
+			// 	// 	//Negative
+			// 	// 	scope.openPos = false;
+			// 	// 	scope.openNeg = true;	
+			// 	// }
+			// });
 
 
 
@@ -43,58 +51,108 @@ app.directive("openingPanel", [function() {
 			}
 
 			scope.open = function(pos){
-				pos == 'pos'? scope.panelCurrent = 'pos' : scope.panelCurrent = 'nag';
+				pos == 'pos'? scope.panelCurrent = 'pos' : scope.panelCurrent = 'neg';
 
 				scope.panelChange();
 			}
 
 
 			scope.panelChange = function(){
-				var val = scope.panelCurrent;
+				
+				if(scope.storyOver){
+					//Then rerboot
+					scope.isShown = {
+						pos : [],
+						neg : []
+					}
+
+					scope.storyOver = false;
+				}
+
+				var val = scope.getPanelValue();
 
 				scope.openOn = true;
-
+				
 				if(val == 'pos'){
 					//Positive
 					scope.openPos = true;
-					scope.openNag = false;	
+					scope.openNeg = false;
 				}else{
 					//Negative
 					scope.openPos = false;
-					scope.openNag = true;	
+					scope.openNeg = true;	
 				}
 
-				// scope.insertContent();
+
+				scope.insertContent();
+
+				--scope.endOfStory;				
 			};
 
 
+			//Return panel value. pos : neg
+			scope.getPanelValue = function(){
+				var res;
+				if(scope.chosenStory == ''){
+					res = scope.panelCurrent;
+
+					scope.chosenStory = scope.panelCurrent;
+				}else{
+					res = scope.chosenStory;
+				}
+
+				return res;
+			}
+
+
+
+
 			scope.insertContent = function(){
-				var year = "2016";
-				var content = "Vasco de Gama s’est frotté au combat lors des guerres contre castille, s’est distingué et a montré de remarquables aptitudes en tant que marin intrépide lors des batailles maritimes.";
-				var contentCover = angular.element(document.getElementsByClassName('content-cover'));
+				var contentNum = scope.randomGenerator();
+				var current = scope.chosenStory;
+
+				var year = current + "_" + contentNum + "_date.jpg";
+				var content = current + "_" + contentNum + "_txt.jpg";
 				
-				c('?');
-				c(contentCover)
+				var contentCoverNeg = angular.element(document.getElementsByClassName('content-cover')[0]);
+				var contentCoverPos = angular.element(document.getElementsByClassName('content-cover')[1]);
 				
 				var html = scope.contentGenerator(year, content);
 
-				html = angular.element(html);
-				
-				if(scope.panelCurrent = 'pos'){
-					contentCover.prepend(html);
+
+				var panelDesc = angular.element(document.getElementsByClassName('panel-description'));
+				panelDesc.remove();
+
+
+				if(scope.panelCurrent == 'pos'){
+					contentCoverNeg.prepend(html.year);
+					contentCoverPos.prepend(html.content);
 				}else{
-					contentCover.prepend(html);
+					contentCoverPos.prepend(html.year);
+					contentCoverNeg.prepend(html.content);
 				}
 			}
 
 
-			scope.contentGenerator = function(y, c){
-				var res = '';
 
-				res += '<div class="panel-content">\
-							<span class="year">' + y + '</span>\
-						</div>\
-						<div class="panel-description">' + c + '</div>';
+
+			scope.contentGenerator = function(y, c){
+				var res = {};
+				var resY;
+				var resC;
+
+				resY = '<div class="panel-content">\
+							<span class="year">\
+								<img src="img/' + y + '" alt="">\
+							</span>\
+						</div>';
+
+				resC = '<div class="panel-description">\
+								<img src="img/' + c + '" alt="">\
+							</div>';
+				
+				res.year = resY;
+				res.content = resC;
 
 				return res;
 			}
@@ -120,6 +178,44 @@ app.directive("openingPanel", [function() {
 				// bottom.css('transform' , 'scale(' + bottomRes + ', 1)');
 
 			}
+
+			
+			
+			scope.randomGenerator = function(){
+				var n;
+
+				n = Math.random() * 100;
+				n = Math.floor(n);
+				n = n % 5;
+				n = n + 1;
+
+				c('random : ' + n);
+
+				scope.registerNum(n);
+
+				c('scope.isShown');
+				c(scope.isShown.pos);
+				
+				return n;
+			}
+
+
+
+			scope.registerNum = function(n){
+				var current = scope.chosenStory;
+
+				if(scope.isShown[current].indexOf(n) == -1){
+					scope.isShown[current].push(n);	
+				}else{
+					//Generate random number again
+					scope.randomGenerator();
+				}
+
+				if(scope.isShown[current].length == 5) scope.storyOver = true;
+				
+			}
+
+
 
 			scope.init();
 
