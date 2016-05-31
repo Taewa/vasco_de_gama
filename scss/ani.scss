@@ -1,0 +1,11 @@
+@keyframes v-enter {
+	0%   { @include prefix(transform, scale(1, 0) translate3d(0, 0, 0), $prefix); height: 0%;}
+	100% { @include prefix(transform, scale(1, 1) translate3d(0, 0, 0), $prefix); height: 100%;}
+}
+
+
+
+@keyframes v-leave {
+	0%   { @include prefix(transform, scale(1, 1) translate3d(0, 0, 0), $prefix); height: 100%;}
+	100% { @include prefix(transform, scale(1, 0) translate3d(0, 0, 0), $prefix); height: 0%;}
+}

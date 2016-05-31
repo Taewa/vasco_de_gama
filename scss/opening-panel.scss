@@ -13,38 +13,52 @@ img{
 ========================================================================== */
 .panel-cover{
 	height: 100%;
-	
+
 	.content-cover{
 		height: 0%;
-		transform: scale(1, 0);
-		transition : all $aniSec ease-in-out;
+		padding: 10px;
+		box-sizing: border-box;
+		background-color: #fff;
+		@include prefix(transform, scale(1, 0) translate3d(0, 0, 0), $prefix);
+		@include prefix(transition, all $aniSec ease-in-out, $prefix);
+
 	}
 	
-	.panel-content{
-		height: 0%;
-		overflow: hidden;
+
+	.year{
+		width: 100%;
+		height: 100%;
+		display: inline-block;
+		background-color: #fff;
 		transition : all $aniSec ease-in-out;
-		transform-origin: center bottom;
 
-		.year{
-			width: 100%;
-			height: 100%;
-			display: inline-block;
-
-			img{
-				height: 100%;
-			}
+		&.ng-enter{
+			@include prefix(animation, v-enter $aniSec, $prefix);
 		}
+
+		&.ng-leave{
+			@include prefix(animation, v-leave $aniSec, $prefix);
+		}
+
 	}
 
 	.panel-description{
 		height: 0%;
 		overflow: hidden;
-		transition : all $aniSec ease-in-out;
-		transform-origin: center top;
+		@include prefix(transition, all $aniSec ease-in-out, $prefix);
+		@include prefix(transform-origin, center top, $prefix); 
 
 		.desc-img{
 			height: 100%;
+			display: block;
+
+			&.ng-enter{
+				@include prefix(animation, v-enter $aniSec, $prefix);
+			}
+
+			&.ng-leave{
+				@include prefix(animation, v-leave $aniSec, $prefix);
+			}
 		}
 	}
 }
@@ -73,10 +87,9 @@ img{
 	.main-title{
 		color: #fff;
 		height: 100%;
-		// background-color: gold;
-		// font-size: 100vw;
 		display: block;
 		transform-origin: left top;
+		-webkit-transform-origin: left top;
 		transition : all $aniSec ease-in-out;
 
 		.title-img{
@@ -101,18 +114,12 @@ img{
 /* Opened panel
 ========================================================================== */
 .panel-content-opened{
-	
-	.panel-content{
-		background:#fff;
-		width: 100%;
-		// position: absolute;
-		// left: 0;
-		transform:scale(1,1);
-	}
 
 	.panel-description{
 		width: 100%;
 		height: 90%;
+		padding: 10px;
+		box-sizing: border-box;
 	}
 
 
@@ -121,20 +128,23 @@ img{
 	========================================================================== */
 	&.positive-mode{
 		.negative-panel{
+			
 			.content-cover{
 				height: 100%;
-				transform: scale(1,1);
-				transform-origin: left bottom;
+				@include prefix(transform, scale(1, 1) translate3d(0, 0, 0), $prefix);
+				@include prefix(transform-origin, left bottom, $prefix);
 			}
 
-			.panel-content{
-				height: 100%;
-				// bottom: 0;
-			}
+			.year{
+				&.ng-enter{
+					@include prefix(transform-origin, center bottom, $prefix);		
+				}
 
-			.panel-description{
-				display: none;
+				&.ng-leave{
+					@include prefix(transform-origin, center bottom, $prefix);		
+				}
 			}
+		
 		}
 
 
@@ -143,22 +153,13 @@ img{
 
 			.main-title{
 				height: 10%;
-				transform: scale(1, 1);
+				@include prefix(transform, scale(1, 1) translate3d(0, 0, 0), $prefix);
 			}
 
 			.content-cover{
-				height: 90%;
-				transform: scale(1,1);
-			}
-			
-			.panel-content{
 				height: 0%;
-				
 			}
 
-			.panel-description{
-
-			}
 		}
 		
 	}
@@ -172,24 +173,18 @@ img{
 	&.negative-mode{
 		
 		.negative-panel{
-
 			.content-cover{
 				height: 90%;
-				transform: scale(1,1);
+				@include prefix(transform, scale(1, 1) translate3d(0, 0, 0), $prefix);
 			}
 
 			.main-title{
 				height: 10%;
-				transform: scale(1, 1);
+				@include prefix(transform, scale(1, 1) translate3d(0, 0, 0), $prefix);
 			}
 
-			.panel-content{
-				height: 0%;
-			}
 
-			.panel-description{
-				
-			}
+			
 		}
 
 		
@@ -198,33 +193,17 @@ img{
 
 			.content-cover{
 				height: 100%;
-				transform: scale(1,1);
-				transform-origin: left bottom;
+				@include prefix(transform, scale(1, 1) translate3d(0, 0, 0), $prefix);
+				@include prefix(transform-origin, left bottom, $prefix);
 			}
 
-			.panel-content{
-				height: 100%;
-				top: 0;
-			}
-
-			.panel-description{
-				display: none;
-			}
 		}
 	}
-
+	
 
 	.main-title{
 		height: 0%;
-		transform : scale(1,0);
-
-		&.top-title{
-			
-		}
-
-		&.bottom-title{
-			
-		}
+		@include prefix(transform, scale(1, 0) translate3d(0, 0, 0), $prefix);
 	}
 
 	

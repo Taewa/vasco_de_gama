@@ -2,6 +2,36 @@
 ========================================================================== */
 /* Animation
 ========================================================================== */
+/* Prefix
+========================================================================== */
+@keyframes v-enter {
+  0% {
+    -webkit-transform: scale(1, 0) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 0) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 0) translate3d(0, 0, 0);
+    transform: scale(1, 0) translate3d(0, 0, 0);
+    height: 0%; }
+  100% {
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 1) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 1) translate3d(0, 0, 0);
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    height: 100%; } }
+
+@keyframes v-leave {
+  0% {
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 1) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 1) translate3d(0, 0, 0);
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    height: 100%; }
+  100% {
+    -webkit-transform: scale(1, 0) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 0) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 0) translate3d(0, 0, 0);
+    transform: scale(1, 0) translate3d(0, 0, 0);
+    height: 0%; } }
+
 /**
  * Resets
  * --------------------------------------------------
@@ -332,30 +362,61 @@ img {
   height: 100%; }
   .panel-cover .content-cover {
     height: 0%;
-    transform: scale(1, 0);
-    transition: all 0.5s ease-in-out; }
-  .panel-cover .panel-content {
-    height: 0%;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-    transform-origin: center bottom; }
-    .panel-cover .panel-content .year {
-      width: 100%;
-      height: 100%;
-      display: inline-block; }
-      .panel-cover .panel-content .year img {
-        height: 100%; }
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    -webkit-transform: scale(1, 0) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 0) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 0) translate3d(0, 0, 0);
+    transform: scale(1, 0) translate3d(0, 0, 0);
+    -webkit-transition: all 1.5s ease-in-out;
+    -moz-transition: all 1.5s ease-in-out;
+    -ms-transition: all 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out; }
+  .panel-cover .year {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-color: #fff;
+    transition: all 1.5s ease-in-out; }
+    .panel-cover .year.ng-enter {
+      -webkit-animation: v-enter 1.5s;
+      -moz-animation: v-enter 1.5s;
+      -ms-animation: v-enter 1.5s;
+      animation: v-enter 1.5s; }
+    .panel-cover .year.ng-leave {
+      -webkit-animation: v-leave 1.5s;
+      -moz-animation: v-leave 1.5s;
+      -ms-animation: v-leave 1.5s;
+      animation: v-leave 1.5s; }
   .panel-cover .panel-description {
     height: 0%;
     overflow: hidden;
-    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 1.5s ease-in-out;
+    -moz-transition: all 1.5s ease-in-out;
+    -ms-transition: all 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out;
+    -webkit-transform-origin: center top;
+    -moz-transform-origin: center top;
+    -ms-transform-origin: center top;
     transform-origin: center top; }
     .panel-cover .panel-description .desc-img {
-      height: 100%; }
+      height: 100%;
+      display: block; }
+      .panel-cover .panel-description .desc-img.ng-enter {
+        -webkit-animation: v-enter 1.5s;
+        -moz-animation: v-enter 1.5s;
+        -ms-animation: v-enter 1.5s;
+        animation: v-enter 1.5s; }
+      .panel-cover .panel-description .desc-img.ng-leave {
+        -webkit-animation: v-leave 1.5s;
+        -moz-animation: v-leave 1.5s;
+        -ms-animation: v-leave 1.5s;
+        animation: v-leave 1.5s; }
 
 .panel {
   height: 50%;
-  transition: all 0.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
   position: relative;
   box-sizing: border-box; }
   .panel.top {
@@ -367,7 +428,8 @@ img {
     height: 100%;
     display: block;
     transform-origin: left top;
-    transition: all 0.5s ease-in-out; }
+    -webkit-transform-origin: left top;
+    transition: all 1.5s ease-in-out; }
     .panel .main-title .title-img {
       height: 100%; }
 
@@ -378,46 +440,64 @@ img {
 	========================================================================== */
   /* Opened : Negative
 	========================================================================== */ }
-  .panel-content-opened .panel-content {
-    background: #fff;
-    width: 100%;
-    transform: scale(1, 1); }
   .panel-content-opened .panel-description {
     width: 100%;
-    height: 90%; }
+    height: 90%;
+    padding: 10px;
+    box-sizing: border-box; }
   .panel-content-opened.positive-mode .negative-panel .content-cover {
     height: 100%;
-    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 1) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 1) translate3d(0, 0, 0);
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
     transform-origin: left bottom; }
-  .panel-content-opened.positive-mode .negative-panel .panel-content {
-    height: 100%; }
-  .panel-content-opened.positive-mode .negative-panel .panel-description {
-    display: none; }
+  .panel-content-opened.positive-mode .negative-panel .year.ng-enter {
+    -webkit-transform-origin: center bottom;
+    -moz-transform-origin: center bottom;
+    -ms-transform-origin: center bottom;
+    transform-origin: center bottom; }
+  .panel-content-opened.positive-mode .negative-panel .year.ng-leave {
+    -webkit-transform-origin: center bottom;
+    -moz-transform-origin: center bottom;
+    -ms-transform-origin: center bottom;
+    transform-origin: center bottom; }
   .panel-content-opened.positive-mode .positive-panel .main-title {
     height: 10%;
-    transform: scale(1, 1); }
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 1) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 1) translate3d(0, 0, 0);
+    transform: scale(1, 1) translate3d(0, 0, 0); }
   .panel-content-opened.positive-mode .positive-panel .content-cover {
-    height: 90%;
-    transform: scale(1, 1); }
-  .panel-content-opened.positive-mode .positive-panel .panel-content {
     height: 0%; }
   .panel-content-opened.negative-mode .negative-panel .content-cover {
     height: 90%;
-    transform: scale(1, 1); }
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 1) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 1) translate3d(0, 0, 0);
+    transform: scale(1, 1) translate3d(0, 0, 0); }
   .panel-content-opened.negative-mode .negative-panel .main-title {
     height: 10%;
-    transform: scale(1, 1); }
-  .panel-content-opened.negative-mode .negative-panel .panel-content {
-    height: 0%; }
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 1) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 1) translate3d(0, 0, 0);
+    transform: scale(1, 1) translate3d(0, 0, 0); }
   .panel-content-opened.negative-mode .positive-panel .content-cover {
     height: 100%;
-    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 1) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 1) translate3d(0, 0, 0);
+    transform: scale(1, 1) translate3d(0, 0, 0);
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
     transform-origin: left bottom; }
-  .panel-content-opened.negative-mode .positive-panel .panel-content {
-    height: 100%;
-    top: 0; }
-  .panel-content-opened.negative-mode .positive-panel .panel-description {
-    display: none; }
   .panel-content-opened .main-title {
     height: 0%;
-    transform: scale(1, 0); }
+    -webkit-transform: scale(1, 0) translate3d(0, 0, 0);
+    -moz-transform: scale(1, 0) translate3d(0, 0, 0);
+    -ms-transform: scale(1, 0) translate3d(0, 0, 0);
+    transform: scale(1, 0) translate3d(0, 0, 0); }

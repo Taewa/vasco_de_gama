@@ -1,46 +1,41 @@
 <section class="panel-cover" ng-class="{ 'panel-content-opened' : openOn, 'positive-mode' : openPos, 'negative-mode' : openNeg }">
 	
+	<!-- Negative area -->
 	<div class="top negative-panel panel" ng-click="open('neg')" ng-class="{ 'panel-opened' : openOn }">
+		
 		<span class="top-title main-title">
-			<img src="img/title-neg.png" class="title-img">
+			<img src="img/title-neg.min.png" class="title-img">
 		</span>
 		
 		
-		<article class="content-cover">
-			<!-- <div class="panel-content">
-				<span class="year">
-					<img src="img/dummy-1.png" alt="">
-				</span>
-			</div>
-
-			<div class="panel-description">
-				<img src="img/dummy-5.png" alt="">
-			</div>	 -->
+		<article class="content-cover" ng-if="chosenStory == 'pos' ">
+			<img class="year" ng-src="{{currentYear}}" ng-repeat="item in imgList.pos">
 		</article>
+
+		
+		<div class="panel-description">
+			<img class="desc-img" ng-src="{{currentParagraph}}" ng-repeat="desc in imgList.neg">
+		</div>
 		
 	</div>
 
 	
 	
-	
+	<!-- Positive area -->
 	<div class="bottom positive-panel panel" ng-click="open('pos')">
 		
-		<article class="content-cover">
-			<!-- <div class="panel-content">
-				<span class="year">
-					<img src="img/dummy-1.png" alt="">
-				</span>
-			</div>
-
-			<div class="panel-description">
-				<img src="img/dummy-2.png" class="desc-img">
-			</div>	 -->
+		<article class="content-cover" ng-if="chosenStory == 'neg' ">
+			<img class="year" ng-src="{{currentYear}}" ng-repeat="item in imgList.neg">
 		</article>
 		
+
+		<div class="panel-description">
+			<img class="desc-img" ng-src="{{currentParagraph}}" ng-repeat="desc in imgList.pos">
+		</div>
+
 		<span class="bottom-title main-title">
-			<img src="img/title-pos.png" class="title-img">
+			<img src="img/title-pos.min.png" class="title-img">
 		</span>
-		
 	</div>
 
 </section>

@@ -17,31 +17,10 @@ app.directive("openingPanel", [function() {
 			}
 			scope.storyOver = false;	//It becomes true when story is over.
 			
-			// scope.topText = 'VASCO';
-			// scope.bottomText = 'DE GAMA';
-
+			scope.imgList = [];
 			
 
-			/* Watch
-			========================================================================== */
-			// scope.$watch('panelCurrent', function(newVal, oldVal){
-			// 	if(newVal == oldVal) return;  // eg, first run
-
-				
-				
-			// 	// scope.openOn = true;
-
-			// 	// if(newVal == 'pos'){
-			// 	// 	//Positive
-			// 	// 	scope.openPos = true;
-			// 	// 	scope.openNeg = false;	
-			// 	// }else{
-			// 	// 	//Negative
-			// 	// 	scope.openPos = false;
-			// 	// 	scope.openNeg = true;	
-			// 	// }
-			// });
-
+			
 
 
 			/* Method
@@ -107,54 +86,107 @@ app.directive("openingPanel", [function() {
 
 
 
+			// scope.insertContent = function(){
+			// 	var contentNum = scope.randomGenerator();
+			// 	var current = scope.chosenStory;
+
+			// 	var year = current + "_" + contentNum + "_date.png";
+			// 	var content = current + "_" + contentNum + "_txt.png";
+				
+			// 	var contentCoverNeg = angular.element(document.getElementsByClassName('content-cover')[0]);
+			// 	var contentCoverPos = angular.element(document.getElementsByClassName('content-cover')[1]);
+				
+			// 	var html = scope.contentGenerator(year, content);
+
+
+			// 	scope.postInsertProcess();
+
+			// 	if(scope.panelCurrent == 'pos'){
+			// 		contentCoverNeg.prepend(html.year);
+			// 		contentCoverPos.prepend(html.content);
+			// 	}else{	//neg
+			// 		contentCoverPos.prepend(html.year);
+			// 		contentCoverNeg.prepend(html.content);
+			// 	}
+			// }
+
+
+
 			scope.insertContent = function(){
 				var contentNum = scope.randomGenerator();
 				var current = scope.chosenStory;
 
-				var year = current + "_" + contentNum + "_date.jpg";
-				var content = current + "_" + contentNum + "_txt.jpg";
+				// var year = current + "_" + contentNum + "_date.png";
+				// var content = current + "_" + contentNum + "_txt.png";
+
+				var year = "sm/neg_1_date.min.png";
+				var content = "sm/neg_1_txt.min.png";
 				
-				var contentCoverNeg = angular.element(document.getElementsByClassName('content-cover')[0]);
-				var contentCoverPos = angular.element(document.getElementsByClassName('content-cover')[1]);
 				
-				var html = scope.contentGenerator(year, content);
 
+				// scope.imgList[scope.chosenStory] = [contentNum];
+				
+				// if(scope.imgList[scope.chosenStory]){
+				// 	scope.imgList[scope.chosenStory].shift();	
+				// }
 
-				var panelDesc = angular.element(document.getElementsByClassName('panel-description'));
-				panelDesc.remove();
-
-
-				if(scope.panelCurrent == 'pos'){
-					contentCoverNeg.prepend(html.year);
-					contentCoverPos.prepend(html.content);
-				}else{
-					contentCoverPos.prepend(html.year);
-					contentCoverNeg.prepend(html.content);
+				if(typeof scope.imgList[scope.chosenStory] != "object"){
+					scope.imgList[scope.chosenStory] = [];
 				}
+				
+				
+
+				scope.imgList[scope.chosenStory] = [contentNum];
+
+				
+				console.log('push');
+				console.log(scope.imgList[scope.chosenStory])
+
+				scope.contentGenerator(year, content);
 			}
 
 
 
 
-			scope.contentGenerator = function(y, c){
-				var res = {};
-				var resY;
-				var resC;
 
-				resY = '<div class="panel-content">\
-							<span class="year">\
-								<img src="img/' + y + '" alt="">\
-							</span>\
-						</div>';
 
-				resC = '<div class="panel-description">\
-								<img src="img/' + c + '" alt="">\
-							</div>';
+			// scope.postInsertProcess = function(){
+			// 	var year = angular.element(document.getElementsByClassName('year')[0]);
+			// }
+
+
+
+
+			// scope.contentGenerator = function(y, c){
+			// 	var res = {};
+			// 	var resY;
+			// 	var resC;
+
+			// 	// resY = '<div class="panel-content">\
+			// 	// 				<img class="year" src="img/' + y + '">\
+			// 	// 		</div>';
+
+			// 	resY = '<img class="year" src="img/' + y + '" ng-show="">';
+
+			// 	resC = '<div class="panel-description">\
+			// 					<img class="desc-img" src="img/' + c + '">\
+			// 				</div>';
 				
-				res.year = resY;
-				res.content = resC;
+			// 	res.year = resY;
+			// 	res.content = resC;
 
-				return res;
+			// 	return res;
+			// }
+
+
+
+
+
+
+			scope.contentGenerator = function(y, c){
+				scope.currentYear = 'img/' + y;
+
+				scope.currentParagraph = 'img/' + c;
 			}
 
 
@@ -193,8 +225,8 @@ app.directive("openingPanel", [function() {
 
 				scope.registerNum(n);
 
-				c('scope.isShown');
-				c(scope.isShown.pos);
+				c('scope.isShown.neg');
+				c(scope.isShown.neg);
 				
 				return n;
 			}
